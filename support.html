@@ -1,0 +1,154 @@
+<title>Support — BIB</title>
+<style>
+  :root {
+    --ink: #0B1A24;
+    --ink-2: #5A7181;
+    --ink-3: #8FA3AF;
+    --paper: #EDF0EA;
+    --card: #FFFFFF;
+    --line: #DDE3DC;
+    --pine: #0E6B60;
+    --pine-soft: #E6F0EE;
+    --gold: #C98A12;
+    --gold-soft: #FAF1DF;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ink: #EDF1EE;
+      --ink-2: #9FB2BE;
+      --ink-3: #6C8492;
+      --paper: #0B1613;
+      --card: #121F26;
+      --line: rgba(255,255,255,0.10);
+      --pine: #2FA894;
+      --pine-soft: rgba(47,168,148,0.14);
+      --gold: #E3AC48;
+      --gold-soft: rgba(227,172,72,0.14);
+    }
+  }
+  :root[data-theme="dark"] {
+    --ink: #EDF1EE; --ink-2: #9FB2BE; --ink-3: #6C8492;
+    --paper: #0B1613; --card: #121F26; --line: rgba(255,255,255,0.10);
+    --pine: #2FA894; --pine-soft: rgba(47,168,148,0.14);
+    --gold: #E3AC48; --gold-soft: rgba(227,172,72,0.14);
+  }
+  :root[data-theme="light"] {
+    --ink: #0B1A24; --ink-2: #5A7181; --ink-3: #8FA3AF;
+    --paper: #EDF0EA; --card: #FFFFFF; --line: #DDE3DC;
+    --pine: #0E6B60; --pine-soft: #E6F0EE;
+    --gold: #C98A12; --gold-soft: #FAF1DF;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  .topbar {
+    display: flex; align-items: center; justify-content: space-between;
+    max-width: 720px; margin: 0 auto; padding: 28px 24px 0;
+    gap: 12px; flex-wrap: wrap;
+  }
+  .mark {
+    font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+    font-weight: 700; font-size: 15px; letter-spacing: 0.04em;
+    color: var(--pine);
+  }
+  .price {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--pine); background: var(--pine-soft);
+    border: 1px solid var(--line); border-radius: 999px;
+    padding: 5px 11px;
+  }
+  main { max-width: 720px; margin: 0 auto; padding: 22px 24px 90px; }
+  h1 {
+    font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+    font-size: clamp(28px, 5vw, 38px); font-weight: 700;
+    letter-spacing: -0.01em; margin: 6px 0 10px; text-wrap: balance;
+  }
+  .dek { color: var(--ink-2); font-size: 16px; max-width: 60ch; margin: 0 0 40px; }
+  .eyebrow {
+    display: block; font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--ink-3); margin-bottom: 6px;
+  }
+  .faq { display: flex; flex-direction: column; gap: 14px; margin-bottom: 40px; }
+  details {
+    background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+    padding: 4px 20px;
+  }
+  summary {
+    font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+    font-size: 17px; font-weight: 700; padding: 16px 0;
+    cursor: pointer; list-style: none; display: flex;
+    align-items: center; justify-content: space-between; gap: 12px;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after {
+    content: "+"; color: var(--pine); font-size: 20px; font-weight: 400;
+    flex-shrink: 0; transition: transform 0.15s ease;
+  }
+  details[open] summary::after { transform: rotate(45deg); }
+  details p { color: var(--ink-2); font-size: 15px; max-width: 60ch; margin: 0 0 18px; }
+  summary:focus-visible { outline: 2px solid var(--pine); outline-offset: 3px; border-radius: 4px; }
+  .contact {
+    padding: 22px 24px; background: var(--card);
+    border: 1px solid var(--line); border-radius: 14px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px; flex-wrap: wrap;
+  }
+  .contact p { margin: 0; color: var(--ink-2); font-size: 14.5px; }
+  .contact a {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 14px;
+    color: var(--ink); background: var(--pine-soft); border-radius: 8px;
+    padding: 8px 12px; text-decoration: none; border: 1px solid var(--line);
+  }
+  .draft-note {
+    max-width: 720px; margin: 0 auto; padding: 0 24px 10px;
+    font-size: 12px; color: var(--ink-3);
+  }
+</style>
+
+<div class="topbar">
+  <span class="mark">BIB</span>
+  <span class="price">Free</span>
+</div>
+
+<main>
+  <span class="eyebrow">Help</span>
+  <h1>Support</h1>
+  <p class="dek">BIB tracks race registration deadlines — lottery windows, general registration opens and closes, qualifier deadlines — so you don't miss the window because you were looking at the wrong week.</p>
+
+  <div class="faq">
+    <details open>
+      <summary>Why doesn't a race I watched show a countdown yet?</summary>
+      <p>Not every race has a confirmed date yet. We'd rather show "date not set" than guess wrong on a lottery date. Watched races without a date show up tagged "Awaiting date" and fill in as we confirm them.</p>
+    </details>
+    <details>
+      <summary>How do notifications work?</summary>
+      <p>Enable push notifications in Settings, then watch a race. You'll get a reminder before registration opens, before it closes, and — for lotteries — when the drawing happens and when results post. Adjust how far in advance you're reminded, and set quiet hours, in Settings.</p>
+    </details>
+    <details>
+      <summary>A race's date, link, or status looks wrong. What do I do?</summary>
+      <p>Tap the race, then "Report a problem." Tell us what's wrong and we'll fix it.</p>
+    </details>
+    <details>
+      <summary>How do I delete my account?</summary>
+      <p>Settings → Delete Account. This is permanent and removes everything — watches, results, photos — right away.</p>
+    </details>
+    <details>
+      <summary>Is BIB free?</summary>
+      <p>Yes, currently free. If a paid tier launches later, existing functionality you're using won't be taken away without notice.</p>
+    </details>
+  </div>
+
+  <div class="contact">
+    <p>Still stuck?</p>
+    <a href="mailto:support@bibregistry.com">support@bibregistry.com</a>
+  </div>
+</main>
