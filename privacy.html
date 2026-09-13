@@ -107,7 +107,7 @@
   }
 </style>
 
-<p class="draft-note">Draft — contact address confirmed. Still needs entity name/jurisdiction confirmed and a non-AI sanity check before linking from App Store Connect.</p>
+<p class="draft-note">Reviewed and confirmed 2026-09-13 — operated by an individual (no separate legal entity). Subscription section added 2026-09-13 ahead of the freemium launch.</p>
 <div class="topbar">
   <span class="mark">BIB</span>
   <span class="updated">Updated Sep 13, 2026</span>
@@ -159,6 +159,11 @@
   </section>
 
   <section>
+    <h2>Subscription status</h2>
+    <p>BIB offers an optional paid subscription (BIB Premium) for expanded access. Purchases are handled entirely by the Apple App Store — we never see or store your payment method or card details. We store whether your subscription is active, which plan, and when it renews or expires, so the app can unlock the right features. If a subscription lapses, none of your existing data is deleted — records, photos, training plans, and watched races all stay exactly as they were; some are simply not shown again until you resubscribe.</p>
+  </section>
+
+  <section>
     <h2>What we don't do</h2>
     <ul>
       <li>We don't run ads and don't share your data with advertisers.</li>
@@ -171,6 +176,8 @@
     <h2>Who else sees it</h2>
     <p><strong>Supabase</strong> hosts our database, authentication, and file storage, and processes data on our behalf under their own security and privacy commitments — they don't independently use your data.</p>
     <p><strong>Expo</strong> delivers push notifications on our behalf using the token described above.</p>
+    <p><strong>RevenueCat</strong> manages our subscriptions — it reads your purchase receipt from Apple to tell us whether your subscription is active. It doesn't have access to your payment details.</p>
+    <p><strong>Apple</strong> processes the actual payment as part of any App Store purchase, under Apple's own privacy policy.</p>
     <p>Data submitted through registration links you tap goes to the race's own registration platform (e.g. RunSignup) — that's between you and them, governed by their privacy policy, not ours.</p>
     <p>We do not otherwise share your personal data with third parties.</p>
   </section>
