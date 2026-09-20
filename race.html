@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BIB — never miss a race registration window</title>
+<meta name="description" content="BIB alerts you the moment a race's registration opens and before it closes.">
+<meta property="og:title" content="A race on BIB">
+<meta property="og:description" content="BIB alerts you the moment a race's registration opens and before it closes.">
+<meta property="og:type" content="website">
+<style>
+  :root { --bg:#EDF0EA; --card:#FBFBF7; --ink:#0B1A24; --ink2:#4B5B66; --pine:#0F6E64; --line:#C9D1C8; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#0A1519; --card:#12232A; --ink:#E8EEF0; --ink2:#9FB0B8; --pine:#4FA396; --line:#233A42; }
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+         min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px 16px; }
+  main { width:100%; max-width:440px; }
+  .brand { font-weight:800; letter-spacing:.28em; font-size:14px; color:var(--pine); margin:0 0 18px; text-align:center; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:18px; padding:24px 22px; }
+  .sport { font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink2); font-weight:700; }
+  h1 { font-size:26px; line-height:1.2; margin:6px 0 4px; }
+  .where { color:var(--ink2); margin:0 0 18px; }
+  .row { display:flex; justify-content:space-between; gap:12px; padding:11px 0; border-top:1px solid var(--line); font-size:15px; }
+  .row span:first-child { color:var(--ink2); }
+  .row span:last-child { font-weight:600; text-align:right; }
+  .btn { display:block; text-align:center; text-decoration:none; font-weight:700; border-radius:14px; padding:14px 16px; margin-top:12px; }
+  .primary { background:var(--pine); color:#fff; }
+  .quiet { border:1px solid var(--line); color:var(--ink); }
+  .note { text-align:center; color:var(--ink2); font-size:13px; margin:16px 0 0; }
+  a:focus-visible { outline:3px solid var(--pine); outline-offset:2px; }
+</style>
+</head>
+<body>
+<main>
+  <p class="brand">BIB</p>
+  <div class="card" id="card">
+    <p class="where" id="status">Loading race…</p>
+  </div>
+  <a class="btn primary" id="open" href="#" hidden>Open in BIB</a>
+  <a class="btn quiet" href="https://apps.apple.com/app/id6797370412">Get BIB on the App Store</a>
+  <p class="note">BIB alerts you the moment a race's registration opens, and again before it closes.</p>
+</main>
+<script>
+(function () {
+  var API = 'https://adgtleqnayvuggnzluho.supabase.co/functions/v1/race-public';
+  var id = new URLSearchParams(location.search).get('id') || '';
+  var card = document.getElementById('card');
+  var open = document.getElementById('open');
+
+  function text(tag, cls, s) { var e = document.createElement(tag); if (cls) e.className = cls; e.textContent = s; return e; }
+  function row(k, v) { var r = document.createElement('div'); r.className = 'row'; r.appendChild(text('span', '', k)); r.appendChild(text('span', '', v)); return r; }
+  function fmt(iso, withYear) {
+    if (!iso) return null; var d = new Date(iso.length === 10 ? iso + 'T12:00:00' : iso);
+    return isNaN(d) ? null : d.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: withYear === false ? undefined : 'numeric' });
+  }
+
+  if (!/^[0-9a-f-]{36}$/i.test(id)) { document.getElementById('status').textContent = 'This link is missing a race. Open BIB to browse races.'; return; }
+  open.href = 'bib://race/' + id; open.hidden = false;
+
+  fetch(API + '?id=' + encodeURIComponent(id)).then(function (r) { return r.ok ? r.json() : Promise.reject(); }).then(function (r) {
+    card.textContent = '';
+    card.appendChild(text('div', 'sport', ((r.sport || '') + (r.distance_key ? ' · ' + r.distance_key : '')).trim()));
+    card.appendChild(text('h1', '', r.name));
+    var where = [r.city, r.region].filter(Boolean).join(', ');
+    if (where) card.appendChild(text('p', 'where', where));
+    var date = fmt(r.race_date);
+    if (date) card.appendChild(row('Race day', date + (r.race_date_status === 'estimated' ? ' (est.)' : '')));
+    var reg = null;
+    if (r.window_state === 'open') reg = 'Open now' + (r.closes_at ? ' · closes ' + fmt(r.closes_at) : '');
+    else if (r.window_state === 'upcoming' && r.opens_at) reg = 'Opens ' + fmt(r.opens_at);
+    else if (r.window_state === 'closed') reg = 'Window closed';
+    else if (r.window_state === 'sold_out') reg = 'Sold out';
+    else if (r.opens_at_est) reg = 'Est. opens ~' + fmt(r.opens_at_est, false);
+    if (reg) card.appendChild(row('Registration', reg));
+    document.title = r.name + ' — BIB';
+  }).catch(function () {
+    document.getElementById('status').textContent = "We couldn't load this race. Open BIB to find it.";
+  });
+})();
+</script>
+</body>
+</html>
