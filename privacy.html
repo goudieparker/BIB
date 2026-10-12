@@ -78,6 +78,7 @@
     font-size: 21px; font-weight: 700; margin: 0 0 12px; letter-spacing: -0.005em;
   }
   section p, section li { font-size: 15.5px; color: var(--ink); max-width: 62ch; }
+  section h3 { font-size: 15px; margin: 18px 0 8px; color: var(--ink-2); }
   section p { margin: 0 0 12px; }
   section ul { margin: 0 0 12px; padding-left: 20px; }
   section li { margin-bottom: 6px; }
@@ -107,88 +108,114 @@
   }
 </style>
 
-<p class="draft-note">Reviewed and confirmed 2026-09-13 — operated by an individual (no separate legal entity). Subscription section added 2026-09-13 ahead of the freemium launch.</p>
+<p class="draft-note">Reviewed and confirmed 2026-09-13 — operated by an individual (no separate legal entity). Subscription section added 2026-09-13 ahead of the freemium launch. Rewritten 2026-10-08 to cover how information is collected, used, shared, stored and retained.</p>
 <div class="topbar">
   <span class="mark">BIB</span>
-  <span class="updated">Updated Sep 19, 2026</span>
+  <span class="updated">Updated Oct 12, 2026</span>
 </div>
 
 <main>
   <span class="eyebrow">Legal</span>
   <h1>Privacy Policy</h1>
-  <p class="dek">BIB is a race registration deadline tracker. This page explains what data the app collects, why, and how you can remove it.</p>
+  <p class="dek">BIB is a race registration deadline tracker. This page explains what information the app collects, how we use, share, store and keep it, and the choices you have.</p>
 
   <section>
-    <h2>Account</h2>
-    <p>Email address and password, handled by our authentication provider (Supabase). We never see or store your password in plain text.</p>
-  </section>
-
-  <section>
-    <h2>Profile</h2>
-    <p>Display name, home location — used only to calculate distance to races and offer a default search radius, changeable or clearable any time — timezone, and search radius preference.</p>
-  </section>
-
-  <section>
-    <h2>Races you watch</h2>
-    <p>Which races and registration paths you've asked to be notified about, and your alert preferences: push on or off, how far in advance to remind you, and quiet hours.</p>
-  </section>
-
-  <section>
-    <h2>Push notification token</h2>
-    <p>If you enable notifications, we store a token issued by Apple or Google, via Expo's push service, that lets us deliver an alert to your device. It identifies your device for notifications only — it is not an advertising identifier, and we don't use it for anything else.</p>
-  </section>
-
-  <section>
-    <h2>Race history you enter</h2>
-    <p>Past race results, times, and notes you choose to add. This is entered by you and never inferred or scraped from elsewhere.</p>
-  </section>
-
-  <section>
-    <h2>Photos</h2>
-    <p>If you photograph a medal or upload one from your library, it's stored privately, associated only with your account. We don't scan, analyze, or share these images.</p>
-  </section>
-
-  <section>
-    <h2>Reports</h2>
-    <p>If you report a problem with a race listing, we store what you submit — which race, what's wrong, any details you add — so we can fix it.</p>
-  </section>
-
-  <section>
-    <h2>App usage</h2>
-    <p>We keep a basic record of how the app is used — which screens are opened and when you sign in — tied to your account, so we can see which parts of BIB people actually use and improve them. This stays inside our own systems: we don't share it with advertisers, analytics companies, or anyone else, and it's never used to track you outside the app.</p>
-  </section>
-
-  <section>
-    <h2>Subscription status</h2>
-    <p>BIB offers an optional paid subscription (BIB Premium) for expanded access. Purchases are handled entirely by the Apple App Store — we never see or store your payment method or card details. We store whether your subscription is active, which plan, and when it renews or expires, so the app can unlock the right features. If a subscription lapses, none of your existing data is deleted — records, photos, training plans, and watched races all stay exactly as they were; some are simply not shown again until you resubscribe.</p>
-  </section>
-
-  <section>
-    <h2>What we don't do</h2>
+    <h2>Information we collect</h2>
+    <p>We collect only what the app needs to work. It falls into three groups.</p>
+    <h3>What you give us</h3>
     <ul>
-      <li>We don't run ads and don't share your data with advertisers.</li>
-      <li>We don't sell your data.</li>
-      <li>We don't track you across other apps or websites.</li>
+      <li><strong>Account:</strong> your email address and a password. The password is stored only in scrambled (hashed) form; we never see it.</li>
+      <li><strong>Profile and settings:</strong> a display name (it starts as the first part of your email address, and you can change it), your home location (a ZIP code you type, or your phone's location at the moment you choose "use my location"), your time zone, search radius, alert preferences, and the sports, distances and states you pick for race alerts.</li>
+      <li><strong>Your races and activity:</strong> the races you watch, whether you've registered, dates you confirm yourself, race results, times and notes, and training plans.</li>
+      <li><strong>Registration profile (optional):</strong> if you choose to save one, the details race sign-up forms usually ask for: your name, date of birth, gender, phone number, mailing address, emergency contact (name, phone and relationship) and shirt size. You can leave any of it blank. This is sensitive, so it is kept separate from the rest and used only as described below.</li>
+      <li><strong>Photos:</strong> medal photos and photos you attach to a race result.</li>
+      <li><strong>Things you send us:</strong> race reports, races you add, feature suggestions, and emails to support.</li>
+    </ul>
+    <h3>What is collected automatically</h3>
+    <ul>
+      <li><strong>Device and app details:</strong> a push notification token (if you turn on notifications), your device model, iOS version and the app version.</li>
+      <li><strong>Usage:</strong> which screens you open, when you sign in, and actions such as watching a race, using filters or sorting, and tapping a registration link.</li>
+      <li><strong>Crash and error reports:</strong> when the app hits a problem, a report with the device and app details, what the app was doing, and an anonymous account ID. It never includes your name, email or password.</li>
+      <li><strong>Connection details:</strong> your IP address and basic request details whenever the app contacts our servers.</li>
+      <li><strong>"Near me" location:</strong> if you tap Near me, the app reads your phone's location once, only while the app is open. It's used on your phone to sort races and is not sent to be stored. We never use background location and keep no location history.</li>
+    </ul>
+    <h3>What we get from others</h3>
+    <p>Apple and RevenueCat tell us whether your subscription is active, which plan, and when it renews or ends. We never receive your card or payment details. We don't collect information about you from any other source, and we never read your accounts on other sites.</p>
+    <p>Camera, photos, location, notifications and calendar are all optional. The app asks only when you use a feature that needs one, can only see the photos you choose, and you can turn any of them off in your phone's Settings.</p>
+  </section>
+
+  <section>
+    <h2>How we use it</h2>
+    <ul>
+      <li><strong>To run BIB:</strong> show races, send the alerts you asked for, sort races by distance, and keep your results, photos, plans and watched races.</li>
+      <li><strong>To email you about your account:</strong> sign-up confirmation and password reset, and replies to your support messages. We don't send marketing email.</li>
+      <li><strong>To improve and fix the app:</strong> usage records and crash reports show us which features people use and where bugs are.</li>
+      <li><strong>To save you typing:</strong> your registration profile is shown only to you, so you can copy or pre-fill the details when you sign up for a race. BIB does not send it to any race website or anyone else, and does not submit registrations for you.</li>
+      <li><strong>To manage your subscription:</strong> unlock the features you've paid for.</li>
+      <li><strong>To keep the service safe:</strong> prevent abuse and investigate problems.</li>
+    </ul>
+    <p>We don't use your information for advertising, profiling or automated decisions about you, and we don't sell it.</p>
+  </section>
+
+  <section>
+    <h2>How we share it</h2>
+    <p>We share information only as described here.</p>
+    <ul>
+      <li><strong>Service providers</strong> that process it for us and may not use it for their own purposes: <strong>Supabase</strong> (hosts our database, sign-in, file storage and servers), <strong>Resend</strong> (delivers account emails, so it sees your email address and the message), <strong>Expo</strong> and <strong>Apple</strong> (deliver push notifications, so they see the alert text), <strong>Sentry</strong> (receives crash reports), and <strong>RevenueCat</strong> (manages subscriptions by reading your purchase status from Apple).</li>
+      <li><strong>Apple</strong> also processes payments for App Store purchases, and its location service on your phone turns a ZIP code or coordinates into a place name, under Apple's own privacy policy.</li>
+      <li><strong>Your registration profile is not shared.</strong> It is not given to race websites, advertisers or other users, and we don't use it for anything but showing it back to you. If you copy it into a race's sign-up form, that is your choice and that site's own privacy policy applies.</li>
+      <li><strong>Race registration sites.</strong> When you tap a registration link, you go to that race's own site (for example RunSignup). What you do there is between you and them, under their privacy policy.</li>
+      <li><strong>Other BIB users.</strong> Your results, photos, plans and watch list are private to you. The one exception: if you add a race that isn't in BIB yet, its details (name, place, date, website) become a listing other users can see. It isn't labeled with your name or email.</li>
+      <li><strong>Legal reasons.</strong> We may disclose information if the law requires it or to protect people's safety or our rights.</li>
+      <li><strong>If BIB changes hands.</strong> If BIB is ever sold or transferred, your information would go with it, and this policy would keep applying until you're told otherwise.</li>
+    </ul>
+    <p><strong>Affiliate links.</strong> Registration links to RunSignup carry an identifier that identifies BIB, not you. If you register within 30 days of tapping one, RunSignup pays BIB a small commission at no cost to you. We send RunSignup no personal information about you, though RunSignup may set its own cookies on its site.</p>
+    <p>We don't sell or rent your personal information, and we don't share it with advertisers.</p>
+  </section>
+
+  <section>
+    <h2>Where and how we store it</h2>
+    <p>Your information is stored on servers in the United States (Supabase, in Amazon Web Services' Oregon region). It's encrypted when it travels between your phone and our servers, and each account's data is protected by access rules so other users can't read it. Your registration profile is protected by its own access rule that lets only your signed-in account read it; the app's reports, analytics and background jobs don't read it. Your photos are stored privately and only you can open them. Access to the underlying data is limited to the person who runs BIB. No system is perfectly secure, but we take these steps to protect what you give us.</p>
+    <p>Some things stay only on your phone: your appearance choices (light or dark mode, seasonal themes), a saved copy of the race list so the app opens quickly and works on a weak connection, the home-screen widget's next-race details, and, if you choose to add race dates to your calendar, the calendar events themselves (we save only a reference ID so we can update or remove them).</p>
+  </section>
+
+  <section>
+    <h2>How long we keep it</h2>
+    <ul>
+      <li><strong>Your account and what you add</strong> (profile, registration profile, watches, results, plans, photos, alert history, suggestions): until you delete it or delete your account.</li>
+      <li><strong>When you delete your account</strong> (Settings → Delete Account), all of that is permanently removed from our live systems right away, along with your device tokens. This can't be undone.</li>
+      <li><strong>Usage records:</strong> kept for 12 months, then deleted. After you delete your account, any remaining records are no longer linked to you.</li>
+      <li><strong>Race reports you sent:</strong> kept after you delete your account, with the link to you removed, so we can still fix the listing.</li>
+      <li><strong>Crash and error reports:</strong> up to 90 days (set by Sentry).</li>
+      <li><strong>Connection logs, including IP addresses:</strong> about 1 day (kept by our hosting provider).</li>
+      <li><strong>Account email delivery records:</strong> up to 30 days (kept by Resend).</li>
+      <li><strong>Backups:</strong> we keep private backups of our database for recovery and delete them after 30 days, so deleted data can remain in a backup for up to that long. Backups don't include photo files or your registration profile.</li>
+      <li><strong>Purchase records:</strong> Apple and RevenueCat keep their own records under their own policies.</li>
+      <li><strong>On your phone:</strong> until you remove the app or clear its data.</li>
     </ul>
   </section>
 
   <section>
-    <h2>Who else sees it</h2>
-    <p><strong>Supabase</strong> hosts our database, authentication, and file storage, and processes data on our behalf under their own security and privacy commitments — they don't independently use your data.</p>
-    <p><strong>Expo</strong> delivers push notifications on our behalf using the token described above.</p>
-    <p><strong>RevenueCat</strong> manages our subscriptions — it reads your purchase receipt from Apple to tell us whether your subscription is active. It doesn't have access to your payment details.</p>
-    <p><strong>Apple</strong> processes the actual payment as part of any App Store purchase, under Apple's own privacy policy.</p>
-    <p>Data submitted through registration links you tap goes to the race's own registration platform (e.g. RunSignup) — that's between you and them, governed by their privacy policy, not ours.</p>
-    <p><strong>Affiliate links.</strong> Registration links to RunSignup carry an affiliate identifier that identifies BIB, not you. If you register within 30 days of tapping one, RunSignup pays BIB a small commission — we don't charge you anything for it. We send RunSignup no personal information about you, though RunSignup may set its own cookies when you visit its site.</p>
-    <p>We do not otherwise share your personal data with third parties.</p>
+    <h2>Your choices and rights</h2>
+    <ul>
+      <li>Edit or clear your profile and home location any time in Settings.</li>
+      <li>Unwatch races, change alert preferences, or turn race alerts off any time.</li>
+      <li>Turn off notifications, location, camera, photos or calendar access in your phone's Settings.</li>
+      <li>Delete individual photos, results and training plans in the app, clear any detail of your registration profile (or all of it), or delete your whole account.</li>
+      <li>To get a copy of the information we hold about you, or to have it corrected or deleted, email support@bibregistry.com. We'll reply within 30 days.</li>
+    </ul>
   </section>
 
   <section>
-    <h2>Your controls</h2>
+    <h2>What we don&#x27;t do</h2>
     <ul>
-      <li>Edit or clear your profile information any time in Settings.</li>
-      <li>Unwatch any race, or adjust your alert preferences, any time.</li>
-      <li>Delete your account from within the app (Settings → Delete Account). This permanently removes your profile, watches, results, photos, and device token, and cannot be undone.</li>
+      <li>We don't run ads, and we don't sell your data.</li>
+      <li>We don't track you across other apps or websites, and we don't use your device's advertising identifier.</li>
+      <li>We don't submit race registrations for you, and we don't send your registration profile to race sites.</li>
+      <li>We don't collect your contacts, health or fitness data, microphone audio, or payment card details.</li>
+      <li>We don't use background location or keep a history of where you've been.</li>
+      <li>We don't read your photo library beyond the photos you choose to add.</li>
+      <li>We don't use third-party advertising or marketing tools in the app.</li>
     </ul>
   </section>
 
