@@ -24,11 +24,34 @@
 <body>
 <main>
   <div class="mark" aria-hidden="true">&#10003;</div>
-  <h1>Email confirmed</h1>
-  <p>Your BIB account is ready. Open the app and sign in with your email and password.</p>
-  <a class="btn" href="bib://">OPEN THE APP</a>
+  <h1 id="title">Email confirmed</h1>
+  <p id="msg">Your BIB account is ready. Open the app and sign in with your email and password.</p>
+  <a class="btn" id="open" href="bib://">OPEN THE APP</a>
   <small>Don't have BIB yet? <a class="link" href="https://apps.apple.com/app/id6797370412">Get it on the App Store</a></small>
   <small>Questions? <a class="link" href="https://bibregistry.com/support">bibregistry.com/support</a></small>
 </main>
+<script>
+  // Supabase sends people here after they tap an email link. The result is in the part after the "#".
+  (function () {
+    var h = location.hash || '';
+    var q = new URLSearchParams(h.replace(/^#/, ''));
+    var title = document.getElementById('title'), msg = document.getElementById('msg'), open = document.getElementById('open'), mark = document.querySelector('.mark');
+    if (q.get('error') || q.get('error_code')) {
+      // Expired or already-used link: do not claim success.
+      mark.innerHTML = '!';
+      title.textContent = 'This link has expired';
+      msg.textContent = 'Open BIB, then sign in. If your account is not confirmed yet, tap "Resend confirmation email". For a password reset, tap "Forgot your password?" again to get a new link.';
+    } else if (q.get('type') === 'recovery' && q.get('access_token')) {
+      // A password-reset link that landed here: hand it to the app, which has the screen for choosing a new password.
+      var target = 'bib://reset-password' + h;
+      mark.innerHTML = '&#128273;';
+      title.textContent = 'Reset your password';
+      msg.textContent = 'Tap the button to open BIB and choose a new password.';
+      open.textContent = 'OPEN BIB';
+      open.href = target;
+      setTimeout(function () { location.href = target; }, 400);
+    }
+  })();
+</script>
 </body>
 </html>

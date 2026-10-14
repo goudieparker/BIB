@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Get BIB — Race Alerts</title>
-<meta http-equiv="refresh" content="2;url=https://apps.apple.com/us/app/bib-race-alerts/id6797370412">
 <style>
   :root { --ink:#0B1A24; --ink-2:#5A7181; --paper:#EDF0EA; --card:#FFFFFF; --line:#DDE3DC; --pine:#0E6B60; }
   @media (prefers-color-scheme: dark) { :root { --ink:#EDF1EE; --ink-2:#9FB2BE; --paper:#0B1613; --card:#121F26; --line:rgba(255,255,255,0.10); --pine:#2FA894; } }
@@ -15,14 +14,17 @@
   main { width:100%; max-width:380px; background:var(--card); border:1px solid var(--line); border-radius:20px; padding:30px 24px; text-align:center; }
   h1 { margin:0 0 8px; font-size:24px; letter-spacing:-0.3px; }
   p { margin:0 0 16px; color:var(--ink-2); line-height:1.5; }
+  .hint { font-size:13px; color:var(--ink-2); margin:16px 0 0; }
   a.btn { display:inline-block; padding:13px 26px; border-radius:999px; background:var(--pine); color:#fff; text-decoration:none; font-weight:700; letter-spacing:0.4px; font-size:14px; }
 </style>
+<noscript><meta http-equiv="refresh" content="0;url=https://apps.apple.com/us/app/bib-race-alerts/id6797370412"></noscript>
 </head>
 <body>
 <main>
-  <h1>Taking you to the App Store…</h1>
+  <h1 id="title">Taking you to the App Store…</h1>
   <p>BIB tells you the moment race registration opens, so you never miss a lottery or a sell-out.</p>
   <a class="btn" id="go" href="https://apps.apple.com/us/app/bib-race-alerts/id6797370412">GET BIB RACE ALERTS</a>
+  <p class="hint" id="hint" hidden>If nothing happens, tap the &bull;&bull;&bull; menu and choose <b>Open in Safari</b>, or search <b>BIB Race Alerts</b> in the App Store.</p>
 </main>
 <script>
   // Sends the visitor to the App Store. Apple's campaign tags (pt = provider token, ct = campaign name) are passed through,
@@ -33,6 +35,14 @@
     ['pt', 'ct', 'mt'].forEach(function (k) { var v = p.get(k); if (v) out.set(k, v); });
     var url = base + (out.toString() ? '?' + out.toString() : '');
     document.getElementById('go').href = url;
+    // Instagram, Facebook, TikTok and similar apps open links in their own in-app browser, which fails ("Cannot connect") when a page
+    // redirects on its own to the App Store. There, do NOT redirect: show the button and let the person's tap open the App Store.
+    var inApp = /Instagram|FBAN|FBAV|FB_IAB|musical_ly|BytedanceWebview|TikTok|Snapchat|LinkedInApp|Pinterest|Line\//i.test(navigator.userAgent);
+    if (inApp) {
+      document.getElementById('title').textContent = 'Get BIB Race Alerts';
+      document.getElementById('hint').hidden = false;
+      return;
+    }
     window.location.replace(url);
   })();
 </script>
