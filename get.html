@@ -33,8 +33,17 @@
     var base = 'https://apps.apple.com/us/app/bib-race-alerts/id6797370412';
     var p = new URLSearchParams(window.location.search), out = new URLSearchParams();
     ['pt', 'ct', 'mt'].forEach(function (k) { var v = p.get(k); if (v) out.set(k, v); });
+    // Apple's campaign analytics needs BIB's provider token (pt) on every link; it is not a secret (it is in every campaign link). Added when the link has none.
+    if (!out.get('pt')) out.set('pt', '129250191');
+    if (!out.get('mt')) out.set('mt', '8');
     var url = base + (out.toString() ? '?' + out.toString() : '');
     document.getElementById('go').href = url;
+    // Anonymous visit count per campaign tag (no cookies, no IP stored: only "linkedin: +1 today"), so the owner can see how many people opened each link.
+    try {
+      var tag = (p.get('ct') || 'direct').toLowerCase().replace(/[^a-z0-9_-]/g, '').slice(0, 40) || 'direct';
+      var ping = 'https://adgtleqnayvuggnzluho.supabase.co/functions/v1/link-click?ct=' + encodeURIComponent(tag);
+      if (!(navigator.sendBeacon && navigator.sendBeacon(ping))) fetch(ping, { method: 'GET', mode: 'no-cors', keepalive: true });
+    } catch (e) { /* counting must never get in the way of the redirect */ }
     // Instagram, Facebook, TikTok and similar apps open links in their own in-app browser, which fails ("Cannot connect") when a page
     // redirects on its own to the App Store. There, do NOT redirect: show the button and let the person's tap open the App Store.
     var inApp = /Instagram|FBAN|FBAV|FB_IAB|musical_ly|BytedanceWebview|TikTok|Snapchat|LinkedInApp|Pinterest|Line\//i.test(navigator.userAgent);
